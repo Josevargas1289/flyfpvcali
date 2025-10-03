@@ -32,3 +32,17 @@ body {
   width: max-content; /* necesario para que el loop funcione */
   animation: marquee 10s linear infinite; /* 👈 ajusta la velocidad aquí */
 }
+@keyframes pulse-neon {
+  0%, 100% {
+    text-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 40px #39FF14;
+    color: #39FF14;
+  }
+  50% {
+    text-shadow: 0 0 2px #39FF14, 0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 20px #39FF14;
+    color: #a8ffb0; /* un verde más claro para el pulso */
+  }
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 1.5s infinite alternate;
+}

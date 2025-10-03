@@ -1,9 +1,9 @@
-import { Link, NavLink, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
-import { useToggle } from '@/hooks/useToggle'
-import { useLockBody } from '@/hooks/useLockBody'
-import { Menu, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useToggle } from '@/hooks/useToggle';
+import { useLockBody } from '@/hooks/useLockBody';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const nav = [
   { to: '/', label: 'Inicio' },
@@ -12,16 +12,16 @@ const nav = [
   { to: '/galeria', label: 'Galería' },
   { to: '/sponsors', label: 'Sponsors' },
   { to: '/contacto', label: 'Contacto' },
-]
+];
 
 export default function Navbar() {
-  const { on, toggle, setOn } = useToggle(false)
-  useLockBody(on)
-  const location = useLocation()
+  const { on, toggle, setOn } = useToggle(false);
+  useLockBody(on);
+  const location = useLocation();
 
   useEffect(() => {
-    setOn(false)
-  }, [location.pathname, setOn])
+    setOn(false);
+  }, [location.pathname, setOn]);
 
   return (
     <header className="sticky top-0 z-50 bg-[#0B0F14] border-b border-white/5">
@@ -29,32 +29,56 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="inline-flex items-center gap-2">
           <img src="/logo.svg" alt="FlyFPVCali" className="h-8 w-auto drop-shadow-neon" />
-          <span className="font-extrabold tracking-wide text-base-text">FlyFPVCali</span>
+          <span
+            className="font-extrabold tracking-wide text-lg sm:text-xl 
+             text-[#39FF14] drop-shadow-[0_0_5px_#39FF14,0_0_10px_#39FF14]
+             animate-pulse-neon"
+          >
+            FlyFPVCali
+          </span>
         </Link>
 
         {/* Desktop menu */}
         <nav className="hidden md:flex items-center gap-6" aria-label="Primary">
           {nav.map((n) => (
-            <NavLink
+            <motion.div
               key={n.to}
-              to={n.to}
-              className={({ isActive }) =>
-                `text-sm hover:text-neon-cyan transition-colors ${
-                  isActive ? 'text-neon-cyan font-semibold' : ''
-                }`
-              }
+              whileHover={{
+                scale: 1.1,
+                textShadow: '0 0 6px #00FFF0, 0 0 12px #00FFF0',
+              }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
-              {n.label}
-            </NavLink>
+              <NavLink
+                to={n.to}
+                className={({ isActive }) =>
+                  `text-sm transition-colors duration-300 ${
+                    isActive
+                      ? 'text-neon-cyan font-semibold drop-shadow-[0_0_6px_#00FFF0]'
+                      : 'text-white hover:text-neon-cyan'
+                  }`
+                }
+              >
+                {n.label}
+              </NavLink>
+            </motion.div>
           ))}
-          <a
-            className="text-sm text-neon-pink hover:underline"
-            href="https://www.instagram.com/fly_fpv_cali/"
-            target="_blank"
-            rel="noreferrer"
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              textShadow: '0 0 6px #FF00AA, 0 0 12px #FF00AA',
+            }}
+            transition={{ type: 'spring', stiffness: 300 }}
           >
-            Instagram
-          </a>
+            <a
+              className="text-sm text-neon-pink transition-colors duration-300 hover:underline"
+              href="https://www.instagram.com/fly_fpv_cali/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Instagram
+            </a>
+          </motion.div>
         </nav>
 
         {/* Mobile button */}
@@ -109,11 +133,10 @@ export default function Navbar() {
                     hidden: { opacity: 0, y: 20 },
                     visible: { opacity: 1, y: 0 },
                   }}
+                  whileHover={{ scale: 1.1, color: '#00FFF0' }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  <NavLink
-                    to={n.to}
-                    className="hover:text-neon-cyan transition-colors"
-                  >
+                  <NavLink to={n.to} className="hover:text-neon-cyan transition-colors">
                     {n.label}
                   </NavLink>
                 </motion.li>
@@ -123,10 +146,11 @@ export default function Navbar() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
                 }}
+                whileHover={{ scale: 1.1, color: '#FF00AA' }}
               >
                 <a
                   className="text-neon-pink hover:underline"
-                  href="[PON_AQUI_URL_DE_INSTAGRAM]"
+                  href="https://www.instagram.com/fly_fpv_cali/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -138,5 +162,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }
