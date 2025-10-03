@@ -4,11 +4,11 @@ import NeonTitle from './NeonTitle'
 export default function Hero() {
   return (
     <section
-      className="relative min-h-[80vh] flex flex-col items-center justify-center text-center overflow-hidden"
+      className="relative min-h-[60vh] flex flex-col items-center justify-center text-center overflow-hidden"
       style={{ backgroundColor: '#0B0F14' }} // 🔵 tu fondo azul/oscuro
     >
       {/* Contenido principal */}
-      <div className="relative z-10">
+      <div className="relative z-10 m-4 ">
         <NeonTitle/>
         <p className="mt-10 max-w-2xl text-lg md:text-xl text-base-text/80">
           FlyFPVCali es un club dedicado a las carreras de drones en primera persona (FPV).
