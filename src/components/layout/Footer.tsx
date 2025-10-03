@@ -5,8 +5,8 @@ export default function Footer() {
         <p>© {new Date().getFullYear()} FlyFPVCali. Velocidad, precisión y adrenalina.</p>
         <nav className="flex gap-4">
           <a className="hover:text-neon-cyan" href="[PON_AQUI_URL_DE_INSTAGRAM]" target="_blank" rel="noreferrer">Instagram</a>
-          <a className="hover:text-neon-cyan" href="mailto:flyfpvcali2025@gmail.com
-">flyfpvcali2025@gmail.com
+          <a className="hover:text-neon-cyan" href="mailto:info@flyfpvcali.com
+">info@flyfpvcali.com
 </a>
         </nav>
       </div>

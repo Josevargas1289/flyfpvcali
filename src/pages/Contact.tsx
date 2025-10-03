@@ -122,10 +122,10 @@ export default function Contact() {
                 </a>
                 <a
                   className="text-neon-green underline"
-                  href="mailto:flyfpvcali2025@gmail.com
+                  href="mailto:info@flyfpvcali.com
                   "
                 >
-                  flyfpvcali2025@gmail.com
+                  info@flyfpvcali.com
                 </a>
               </div>
             </aside>
