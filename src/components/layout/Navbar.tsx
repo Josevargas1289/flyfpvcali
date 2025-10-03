@@ -4,6 +4,7 @@ import { useToggle } from '@/hooks/useToggle';
 import { useLockBody } from '@/hooks/useLockBody';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaInstagram } from 'react-icons/fa'; // 📌 FontAwesome
 
 const nav = [
   { to: '/', label: 'Inicio' },
@@ -24,18 +25,15 @@ export default function Navbar() {
   }, [location.pathname, setOn]);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0B0F14] border-b border-white/5">
+    <header
+      className="sticky top-0 z-50 bg-[#0B0F14] 
+             border-b border-[#00FFF0]/20 
+             shadow-[0_0_4px_#00FFF0]/30"
+    >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         {/* Logo */}
         <Link to="/" className="inline-flex items-center gap-2">
-          <img src="/logo.svg" alt="FlyFPVCali" className="h-8 w-auto drop-shadow-neon" />
-          <span
-            className="font-extrabold tracking-wide text-lg sm:text-xl 
-             text-[#39FF14] drop-shadow-[0_0_5px_#39FF14,0_0_10px_#39FF14]
-             animate-pulse-neon"
-          >
-            FlyFPVCali
-          </span>
+          <img src="/logo.svg" alt="FlyFPVCali" className="h-10 w-auto drop-shadow-neon" />
         </Link>
 
         {/* Desktop menu */}
@@ -63,20 +61,22 @@ export default function Navbar() {
               </NavLink>
             </motion.div>
           ))}
+          {/* Solo ícono en desktop */}
           <motion.div
             whileHover={{
-              scale: 1.1,
-              textShadow: '0 0 6px #FF00AA, 0 0 12px #FF00AA',
+              scale: 1.2,
+              rotate: 5,
+              filter: 'drop-shadow(0 0 8px #FF00AA)',
             }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
             <a
-              className="text-sm text-neon-pink transition-colors duration-300 hover:underline"
               href="https://www.instagram.com/fly_fpv_cali/"
               target="_blank"
               rel="noreferrer"
+              className="block"
             >
-              Instagram
+              <FaInstagram className="h-6 w-6 text-neon-pink hover:text-neon-cyan transition-colors" />
             </a>
           </motion.div>
         </nav>
@@ -141,20 +141,23 @@ export default function Navbar() {
                   </NavLink>
                 </motion.li>
               ))}
+              {/* Ícono + texto solo en mobile */}
               <motion.li
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
                 }}
                 whileHover={{ scale: 1.1, color: '#FF00AA' }}
+                className="flex items-center gap-2"
               >
                 <a
-                  className="text-neon-pink hover:underline"
                   href="https://www.instagram.com/fly_fpv_cali/"
                   target="_blank"
                   rel="noreferrer"
+                  className="flex items-center gap-2 text-neon-pink hover:text-neon-cyan transition-colors"
                 >
-                  Instagram
+                  <FaInstagram className="h-7 w-7" />
+                  <span>Instagram</span>
                 </a>
               </motion.li>
             </motion.ul>

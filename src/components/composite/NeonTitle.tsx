@@ -1,9 +1,9 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useMemo } from 'react'
 
-type Props = { text?: string }
+type Props = { logoSrc?: string }
 
-export default function NeonTitle({ text = 'FlyFPVCali' }: Props) {
+export default function NeonTitle({ logoSrc = '/logo.svg' }: Props) {
   // Movimiento con el mouse (tilt 3D)
   const mx = useMotionValue(0)
   const my = useMotionValue(0)
@@ -11,7 +11,9 @@ export default function NeonTitle({ text = 'FlyFPVCali' }: Props) {
   const rotateY = useTransform(mx, [0, 1], [-10, 10])
 
   function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const { left, top, width, height } = (e.currentTarget as HTMLDivElement).getBoundingClientRect()
+    const { left, top, width, height } = (
+      e.currentTarget as HTMLDivElement
+    ).getBoundingClientRect()
     const px = (e.clientX - left) / width
     const py = (e.clientY - top) / height
     mx.set(px)
@@ -33,44 +35,29 @@ export default function NeonTitle({ text = 'FlyFPVCali' }: Props) {
     []
   )
 
-  const letters = Array.from(text)
-
   return (
     <motion.div
       onMouseMove={onMouseMove}
       style={{ perspective: 1000, rotateX, rotateY }}
-      className="relative mt-10 mb mx-auto inline-block select-none "
-      aria-label={text}
+      className="relative mt-10 mb-6 mx-auto inline-block select-none"
     >
       {/* Glow difuso detrás */}
       <div
-        className="pointer-events-none absolute -inset-6 rounded-[2.5rem] blur-2xl"
+        className="pointer-events-none absolute -inset-10 rounded-full blur-3xl"
         style={{
-          background: 'radial-gradient(60% 60% at 50% 50%, rgba(57,255,20,0.25), transparent 70%)',
+          background:
+            'radial-gradient(60% 60% at 50% 50%, rgba(57,255,20,0.25), transparent 70%)',
         }}
       />
 
-      {/* Texto animado letra por letra */}
-      <h1 className="relative z-10 text-5xl md:text-7xl font-extrabold tracking-tight text-base-text">
-        {letters.map((ch, i) => (
-          <motion.span
-            key={i}
-            className="neon-text inline-block"
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, delay: i * 0.06, ease: 'easeInOut' }}
-            style={{
-              textShadow:
-                '0 0 8px rgba(57,255,20,0.8), 0 0 16px rgba(57,255,20,0.5), 0 0 32px rgba(57,255,20,0.35)',
-              background: 'linear-gradient(90deg,#39FF14 0%, #E6F1FF 50%, #39FF14 100%)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent',
-            }}
-          >
-            {ch === ' ' ? '\u00A0' : ch}
-          </motion.span>
-        ))}
-      </h1>
+      {/* Logo en lugar del texto */}
+      <motion.img
+        src={logoSrc}
+        alt="FlyFPVCali"
+        className="relative z-10 h-32 w-auto drop-shadow-[0_0_20px_#39FF14]"
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: 'spring', stiffness: 200 }}
+      />
 
       {/* Chispas flotantes */}
       <div className="pointer-events-none absolute inset-0">
@@ -95,7 +82,12 @@ export default function NeonTitle({ text = 'FlyFPVCali' }: Props) {
               x: [0, s.driftX],
               scale: [0.8, 1, 0.8],
             }}
-            transition={{ duration: s.dur, delay: s.delay, repeat: Infinity, ease: 'easeOut' }}
+            transition={{
+              duration: s.dur,
+              delay: s.delay,
+              repeat: Infinity,
+              ease: 'easeOut',
+            }}
           />
         ))}
       </div>

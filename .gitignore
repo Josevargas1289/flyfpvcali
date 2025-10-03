@@ -44,3 +44,6 @@ coverage/
 
 # 🚫 Storybook / Documentación
 storybook-static/
+# Ignorar todos los videos locales
+/public/videos/*
+!/public/videos/.gitkeep

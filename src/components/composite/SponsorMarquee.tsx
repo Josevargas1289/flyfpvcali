@@ -1,10 +1,10 @@
 const list = [
-  { id: 1, logo: '/sponsors/Skyline.png', url: 'https://gemfanhobby.com/' },
-  { id: 2, logo: '/sponsors/abogados.jpg', url: 'https://www.flycolor.net/' },
-  { id: 3, logo: '/sponsors/Skyline.png', url: 'https://gemfanhobby.com/' },
-  { id: 4, logo: '/sponsors/abogados.jpg', url: 'https://www.flycolor.net/' },
-  { id: 5, logo: '/sponsors/Skyline.png', url: 'https://gemfanhobby.com/' },
-  { id: 6, logo: '/sponsors/abogados.jpg', url: 'https://www.flycolor.net/' },
+  { id: 1, logo: '/sponsors/Skyline.png', url: '' },
+  { id: 2, logo: '/sponsors/abogados.jpg', url: '' },
+  { id: 3, logo: '/sponsors/Skyline.png', url: '' },
+  { id: 4, logo: '/sponsors/abogados.jpg', url: '' },
+  { id: 5, logo: '/sponsors/Skyline.png', url: '' },
+  { id: 6, logo: '/sponsors/abogados.jpg', url: '' },
 ]
 
 export default function SponsorMarquee() {

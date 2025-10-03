@@ -4,6 +4,7 @@ import FeatureGrid from '@/components/composite/FeatureGrid'
 import StatsStrip from '@/components/composite/StatsStrip'
 import SponsorMarquee from '@/components/composite/SponsorMarquee'
 import PageTitle from '@/components/layout/PageTitle'
+import Divider from '@/components/ui/Divider'
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
 
         {/* ✅ Sección 1 */}
+        <Divider/>
         <Section
           title="¿Qué es FPV Racing?"
           subtitle="Las carreras de drones son una competencia en la que pilotos controlan drones en primera persona (FPV), usando gafas especiales que transmiten la visión de la cámara del dron. 
@@ -29,7 +31,7 @@ export default function Home() {
         <Section>
           <StatsStrip />
         </Section>
-
+      <Divider/>
         {/* ✅ Sponsors */}
         <Section title="Sponsors">
           <SponsorMarquee />

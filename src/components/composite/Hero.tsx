@@ -11,10 +11,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-3xl">
         <NeonTitle />
 
-        {/* Separador decorativo */}
-        <div className="mt-4 mb-6 h-1 w-20 mx-auto bg-neon-green rounded-full shadow-[0_0_10px_#39FF14]" />
-
-        <p className="mt-6 text-base sm:text-lg md:text-xl text-base-text/80 leading-relaxed">
+               <p className="mt-6 text-base sm:text-lg md:text-xl text-base-text/80 leading-relaxed">
           FlyFPVCali es un club dedicado a las carreras de drones en primera persona (FPV).
           Organizamos entrenamientos y competencias en Cali, promoviendo el uso creativo del tiempo libre
           con nuevas tecnologías, fomentando la pasión por volar y el trabajo en equipo.

@@ -1,23 +1,64 @@
+import { useEffect, useRef, useState } from 'react'
 import Card from '@/components/ui/Card'
 
 const features = [
   { 
     title: 'Carreras locales',
     desc: 'Compite en pistas de Cali y alrededores.',
-    video: 'https://www.instagram.com/p/DMoOXtWxefJ/embed/' // 👈 nota el /embed/
+    video: '/videos/video1.mp4',
   },
   { 
     title: 'Entrenamientos',
     desc: 'Sesiones para mejorar técnica y tiempos.',
-    video: 'https://www.instagram.com/p/DNEWTySICv7/embed/' 
+    video: '/videos/video3.mp4',
   },
+  
   { 
     title: 'Comunidad',
     desc: 'Aprende, comparte y vuela con seguridad.',
-    video: 'https://www.instagram.com/p/DMtuALUNCFf/embed/' 
+    video: '/videos/video2.mp4',
+    
   },
 ]
 
+function LazyVideo({ src }: { src: string }) {
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+            observer.disconnect()
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+
+    observer.observe(video)
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div className="w-full aspect-[16/9] overflow-hidden rounded-lg">
+      <video
+        ref={videoRef}
+        src={isVisible ? src : undefined}
+        controls
+        playsInline
+        preload="none"
+        className="w-full h-full object-contain bg-black" 
+      />
+    </div>
+  )
+}
 
 export default function FeatureGrid() {
   return (
@@ -26,18 +67,7 @@ export default function FeatureGrid() {
         <Card key={f.title} className="flex flex-col items-center text-center">
           <h3 className="font-semibold mb-1">{f.title}</h3>
           <p className="text-sm text-base-text/80 mb-2">{f.desc}</p>
-          {f.video && (
-            <div className="w-full aspect-[9/16] overflow-hidden rounded-lg">
-              <iframe
-                src={f.video}
-                width="100%"
-                height="100%"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                allowFullScreen
-                className="w-full h-full border-0"
-              ></iframe>
-            </div>
-          )}
+          {f.video && <LazyVideo src={f.video} />}
         </Card>
       ))}
     </div>
