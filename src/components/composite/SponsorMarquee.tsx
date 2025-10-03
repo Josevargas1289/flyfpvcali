@@ -9,20 +9,23 @@ const list = [
 
 export default function SponsorMarquee() {
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/10 bg-base-card">
-      <div className="flex gap-12 p-6 animate-marquee">
-        {list.concat(list).map((s, i) => ( // 👈 duplicamos para efecto infinito
+    <div className="relative overflow-hidden rounded-2xl glass border border-white/10">
+      {/* Overlay verde suave */}
+      <div className="absolute inset-0 bg-neon-green/5 pointer-events-none" />
+
+      <div className="flex gap-16 py-8 animate-marquee">
+        {list.concat(list).map((s, i) => (
           <a
             key={i}
             href={s.url}
             target="_blank"
             rel="noreferrer"
-            className="shrink-0 opacity-80 hover:opacity-100 transition-opacity"
+            className="shrink-0 opacity-80 hover:opacity-100 transition-all transform hover:scale-110"
           >
             <ImageWithGlow
               src={s.logo}
               alt={`Sponsor ${s.id}`}
-              className="h-12 w-auto object-contain"
+              className="h-14 w-auto object-contain drop-shadow-[0_0_10px_rgba(57,255,20,0.4)]"
             />
           </a>
         ))}

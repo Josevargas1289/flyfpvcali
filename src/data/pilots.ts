@@ -121,4 +121,19 @@ export default [
       cam: "Nano 90 V3",
     },
   },
+  {
+  id: 9,
+  nombre: "Felipe López",
+  alias: "fpvsonny",
+  instagram: "https://instagram.com/fpvsonny",
+  avatarUrl: "/images/imagesPilots/imgp9.jpg", // 📷 coloca aquí la imagen descargada del perfil
+  setup: {
+    frame: "Floss",
+    motors: "Xing E Pro 1800Kv",
+    fc: "Foxeer Mini F7",
+    esc: "Flycolor TR20",
+    vtx: "Rush Race 2",
+    cam: "Foxeer Nano Predator"
+  }
+}
 ] as const

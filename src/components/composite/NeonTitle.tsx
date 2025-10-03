@@ -39,7 +39,7 @@ export default function NeonTitle({ text = 'FlyFPVCali' }: Props) {
     <motion.div
       onMouseMove={onMouseMove}
       style={{ perspective: 1000, rotateX, rotateY }}
-      className="relative mx-auto inline-block select-none"
+      className="relative mt-10 mx-auto inline-block select-none"
       aria-label={text}
     >
       {/* Glow difuso detrás */}

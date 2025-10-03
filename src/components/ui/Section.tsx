@@ -1,10 +1,22 @@
-import { ReactNode } from 'react'
+type SectionProps = {
+  title?: string
+  subtitle?: string
+  children: React.ReactNode
+}
 
-export default function Section({ title, subtitle, children }: { title?: string; subtitle?: string; children: ReactNode }) {
+export default function Section({ title, subtitle, children }: SectionProps) {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12">
-      {title && <h2 className="text-2xl md:text-3xl font-bold mb-2 neon-text">{title}</h2>}
-      {subtitle && <p className="text-base/relaxed text-base-text/80 mb-6">{subtitle}</p>}
+    <section className="my-12 px-4">
+      {title && (
+        <h2 className="text-2xl font-bold text-neon-green mb-3 text-center md:text-left">
+          {title}
+        </h2>
+      )}
+      {subtitle && (
+        <p className="text-base-text/80 mb-6 max-w-3xl mx-auto md:mx-0 text-center md:text-left">
+          {subtitle}
+        </p>
+      )}
       {children}
     </section>
   )
