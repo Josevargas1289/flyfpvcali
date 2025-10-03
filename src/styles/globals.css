@@ -30,5 +30,5 @@ body {
 .animate-marquee {
   display: flex;
   width: max-content; /* necesario para que el loop funcione */
-  animation: marquee 25s linear infinite; /* 👈 ajusta la velocidad aquí */
+  animation: marquee 10s linear infinite; /* 👈 ajusta la velocidad aquí */
 }
